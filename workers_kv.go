@@ -38,8 +38,13 @@ func (api *API) ListWorkersKVNamespaces() ([]WorkerKVNamespace, error) {
 	panic("method not implemented")
 }
 
+// DeleteWorkersKVNamespace deletes a worker kv namespace
 func (api *API) DeleteWorkersKVNamespace(id string) error {
-	panic("method not implemented")
+  uri := api.userBaseURL("/accounts") + baseWorkersKVURI + "/" + id
+	if _, err := api.makeRequest("DELETE", uri, nil); err != nil {
+		return errors.Wrap(err, errMakeRequestError)
+	}
+	return nil
 }
 
 func (api *API) RenameWorkersKVNamespace(id string, title string) (WorkerKVNamespace, error) {
