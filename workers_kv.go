@@ -5,13 +5,14 @@ type CloudflareWorkersKVNamespace struct {
 	Title string `json:"title"`
 }
 
+const baseWorkersKVURI = `/storage/kv/namespaces`
+
 func (api *API) CreateWorkersKVNamespace(title string) (CloudflareWorkersKVNamespace, error) {
 	panic("method not implemented")
 }
 
 func (api *API) ListWorkersKVNamespaces() ([]CloudflareWorkersKVNamespace, error) {
 	panic("method not implemented")
-
 }
 
 func (api *API) DeleteWorkersKVNamespace(id string) error {
