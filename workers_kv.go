@@ -1,6 +1,8 @@
 package cloudflare
 
 import (
+	"encoding/json"
+
 	"github.com/pkg/errors"
 )
 
@@ -16,9 +18,9 @@ type workersKVNamespaceResponse struct {
 
 const baseWorkersKVURI = `/storage/kv/namespaces`
 
-// CreateWorkersKVNamespace creates a new worker kv namespace
+// CreateWorkerKVNamespace creates a new worker kv namespace
 // note: titles have a unique constraint within an account
-func (api *API) CreateWorkersKVNamespace(title string) (WorkerKVNamespace, error) {
+func (api *API) CreateWorkerKVNamespace(title string) (WorkerKVNamespace, error) {
 	uri := api.userBaseURL("/accounts") + baseWorkersKVURI
 	ns := WorkerKVNamespace{
 		Title: title,
@@ -34,19 +36,19 @@ func (api *API) CreateWorkersKVNamespace(title string) (WorkerKVNamespace, error
 	return r.Result, nil
 }
 
-func (api *API) ListWorkersKVNamespaces() ([]WorkerKVNamespace, error) {
+func (api *API) ListWorkerKVNamespaces() ([]WorkerKVNamespace, error) {
 	panic("method not implemented")
 }
 
 // DeleteWorkersKVNamespace deletes a worker kv namespace
-func (api *API) DeleteWorkersKVNamespace(id string) error {
-  uri := api.userBaseURL("/accounts") + baseWorkersKVURI + "/" + id
+func (api *API) DeleteWorkerKVNamespace(id string) error {
+	uri := api.userBaseURL("/accounts") + baseWorkersKVURI + "/" + id
 	if _, err := api.makeRequest("DELETE", uri, nil); err != nil {
 		return errors.Wrap(err, errMakeRequestError)
 	}
 	return nil
 }
 
-func (api *API) RenameWorkersKVNamespace(id string, title string) (WorkerKVNamespace, error) {
+func (api *API) RenameWorkerKVNamespace(id string, title string) (WorkerKVNamespace, error) {
 	panic("method not implemented")
 }
