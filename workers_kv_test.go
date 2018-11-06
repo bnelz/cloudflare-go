@@ -1,6 +1,8 @@
 package cloudflare
 
 import (
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
 
